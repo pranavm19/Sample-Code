@@ -75,7 +75,6 @@ axis tight;
 subplot(1,2,2);
 hold on;
 [W, V] = ode45(f, [0 100], V(length(W),:) );
-%[W, V] = ode45(f, [0 100], V(length(W),:) );
 plot(i, min(V(:,1)), 'm.');
 plot(i, max(V(:,1)), 'm.');
 plot(i, Vs,color);
