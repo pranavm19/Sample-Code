@@ -1,5 +1,5 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Usage: [x, y] = AdamsBashforth(f_ode, xRange, yInitial, Tol, )
+% Usage: [x, y] = AdamsBashforth(f_ode, xRange, yInitial, Tol, hMAx, hMin)
 %
 % Description:
 % To approximate the solution of the initial-value problem
@@ -13,7 +13,7 @@
 % Outputs: t,y vectors where at the ith step y(i,:) approximates y(ti)
 %   
 % Author:
-% Pranav Mamidanna, March 2014
+% Pranav Mamidanna, January 2015
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 function [t, y] = AdamsBashforth(f, tRange, yInitial, Tol, hMax, hMin)
@@ -25,7 +25,7 @@ function [t, y] = AdamsBashforth(f, tRange, yInitial, Tol, hMax, hMin)
     
     % Traditional Fourth Order Runge Kutta Method for Approximating
     % the first 3 values.
-    [t, y] = RungeKutta4(f, 1, t, y);
+    [t, y] = RungeKutta4(f, 1, t, y, h);
 
     while(FLAG == 1)
         i = i+1;
@@ -55,7 +55,7 @@ function [t, y] = AdamsBashforth(f, tRange, yInitial, Tol, hMax, hMin)
                     h = (xRange(2) - t(i-1))/4 ;
                     LAST = 1;
                 end
-                [t, y] = RungeKutta4(f, i-1, t, y);                
+                [t, y] = RungeKutta4(f, i-1, t, y, h);                
             end
         else
             q = (Tol/(2*sig))^0.25;
@@ -68,14 +68,14 @@ function [t, y] = AdamsBashforth(f, tRange, yInitial, Tol, hMax, hMin)
                    FLAG = 0;
                    print('hMin exceeded');
                else
-                   [t, y] = RungeKutta4(f, i-1, t, y);
+                   [t, y] = RungeKutta4(f, i-1, t, y, h);
                end
         end
     end
     
 end
 
-function [t,y] = RungeKutta4(f, j, t, y) 
+function [t,y] = RungeKutta4(f, j, t, y, h) 
 % 4th Order Runge Kutta Method to predict three consecutive
 % values.
     for k = j:j+3
