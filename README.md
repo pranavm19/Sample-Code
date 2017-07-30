@@ -7,4 +7,4 @@ This was written as part of self-learning and exploration during the EdX course:
 2. Non-Isothermal CSTR:
 This was written as part of my bachelors thesis on CSTR dynamics. A Non-isothermal CSTR system of 6 State Variables is reduced to a 3-D model and is shown to exhibit deterministic Chaos.
 3. Adams Bashforth Predictor Corrector Method:
-This was written as part of my research internship in the Mathematical Sciences group at University of Hyderabad. The Adams Bashforth Predictor Corrector Numerical Method is implemented drawing initial basis from 4th Order Runge Kutta Method.
+This was written as part of my research internship in the Mathematical Sciences group at University of Hyderabad. The Adams Bashforth Predictor Corrector Method is implemented drawing initial basis from 4th Order Runge Kutta Method.
